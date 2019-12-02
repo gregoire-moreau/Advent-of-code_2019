@@ -1,17 +1,14 @@
-
-
-
 def program(op_codes):
-    cursor = 0
-    while op_codes[cursor] != 99:
-        if op_codes[cursor] == 1:
-            op_codes[op_codes[cursor+3]] = op_codes[op_codes[cursor+1]] + op_codes[op_codes[cursor+2]]
-        elif op_codes[cursor] == 2:
-            op_codes[op_codes[cursor + 3]] = op_codes[op_codes[cursor + 1]] * op_codes[op_codes[cursor + 2]]
+    pointer = 0
+    while op_codes[pointer] != 99:
+        if op_codes[pointer] == 1:
+            op_codes[op_codes[pointer+3]] = op_codes[op_codes[pointer+1]] + op_codes[op_codes[pointer+2]]
+        elif op_codes[pointer] == 2:
+            op_codes[op_codes[pointer + 3]] = op_codes[op_codes[pointer + 1]] * op_codes[op_codes[pointer + 2]]
         else:
-            print("Unrecognized opcode : ", op_codes[cursor])
+            print("Unrecognized opcode : ", op_codes[pointer])
             break
-        cursor += 4
+        pointer += 4
     return op_codes[0]
 
 
@@ -27,6 +24,7 @@ op_codes[2] = 2
 
 print(program(op_codes.copy()))
 
+# Part 2
 for noun in range(100):
     for verb in range(100):
         op_codes[1] = noun
